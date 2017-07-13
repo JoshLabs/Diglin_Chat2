@@ -79,7 +79,8 @@ class Display extends Template
         array $data = []
     ) {
         $this->chatHelper = $context->getChatHelper();
-        $this->localeResolver = $context->getLocaleResolver();
+        // ToDo: this needs to fix
+        // $this->localeResolver = $context->getLocaleResolver();
         $this->customerSession = $customerSession;
         $this->filesystem = $context->getFilesystem();
         $this->coreFileStorageDatabase = $coreFileStorageDatabase;
@@ -200,10 +201,10 @@ class Display extends Template
         if ($this->chatHelper->getLanguage() == 'auto') {
             return null;
         }
-
-        if ($this->chatHelper->getLanguage() == 'md') {
-            return "\$zopim.livechat.setLanguage('" . substr($this->localeResolver->getLocale(), 0, 2) . "');" . "\n";
-        }
+        // ToDo: this needs to fix
+        // if ($this->chatHelper->getLanguage() == 'md') {
+        //     return "\$zopim.livechat.setLanguage('" . substr($this->localeResolver->getLocale(), 0, 2) . "');" . "\n";
+        // }
 
         return "\$zopim.livechat.setLanguage('" . $this->chatHelper->getLanguage() . "');" . "\n";
     }
